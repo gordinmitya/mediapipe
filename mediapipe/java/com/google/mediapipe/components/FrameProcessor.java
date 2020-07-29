@@ -118,6 +118,12 @@ public class FrameProcessor implements TextureFrameProcessor, AudioDataProcessor
     initializeGraphAndPacketCreator(graphConfig);
   }
 
+  public FrameProcessor(byte[] graphData) {
+    mediapipeGraph = new Graph();
+    mediapipeGraph.loadBinaryGraph(graphData);
+    packetCreator = new AndroidPacketCreator(mediapipeGraph);
+  }
+
   /**
    * Initializes a graph for processing data in real time.
    *
